@@ -1,7 +1,7 @@
 package arppl4.spring_rental.service;
 
 import arppl4.spring_rental.model.Car;
-import arppl4.spring_rental.repository.RentalRepository;
+import arppl4.spring_rental.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -14,19 +14,19 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class CarService {
-    private final RentalRepository rentalRepository;
+    private final CarRepository carRepository;
 
     public List<Car> carList() {
-        return rentalRepository.findAll();
+        return carRepository.findAll();
     }
 
     public void addCar(Car car) {
-        rentalRepository.save(car);
+        carRepository.save(car);
     }
 
     public void updateCar(Car daneAktualizujące) {
         Long id = daneAktualizujące.getId();
-        Optional<Car> carOptional = rentalRepository.findById(id);
+        Optional<Car> carOptional = carRepository.findById(id);
         if (carOptional.isPresent()) {
             Car editedCar = carOptional.get();
 
@@ -48,7 +48,7 @@ public class CarService {
                 editedCar.setIlośćPasażerów(daneAktualizujące.getIlośćPasażerów());
             }
 
-            rentalRepository.save(editedCar);
+            carRepository.save(editedCar);
             log.info("Dane samochodu zostały zaktualizowane.");
             return;
         }
@@ -56,6 +56,6 @@ public class CarService {
     }
 
     public void deleteCar(Long id) {
-        rentalRepository.deleteById(id);
+        carRepository.deleteById(id);
     }
 }
