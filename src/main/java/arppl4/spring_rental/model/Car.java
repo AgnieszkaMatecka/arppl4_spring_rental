@@ -21,10 +21,18 @@ public class Car {
 
     @Enumerated(EnumType.STRING)
     private TypNadwozia typNadwozia;
-    private int ilośćPasażerów;
+    private Integer ilośćPasażerów;
 
     @Enumerated(EnumType.STRING)
     private TypSkrzyni typSkrzyni;
 
     private Double pojemnośćSilnika;
+    public Car(String nazwa, String marka, LocalDate dataProdukcji, Integer ilośćPasażerów, Double pojemnośćSilnika, TypSkrzyni typSkrzyni) {
+        this.nazwa = nazwa;
+        this.marka = marka;
+        this.dataProdukcji = dataProdukcji;
+        this.typSkrzyni = typSkrzyni;
+        this.ilośćPasażerów = ilośćPasażerów;
+        this.pojemnośćSilnika = pojemnośćSilnika;
+    }
 }
